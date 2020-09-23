@@ -38,7 +38,7 @@ def test_adel_mtg():
 
     assert len(g) == len(g.sub_mtg(g.root))
 
-    print symbols.keys()
+    print(symbols.keys())
     g=mtg.mtg_turtle(g,symbols)
     return g
 

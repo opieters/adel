@@ -27,7 +27,7 @@ def thermal_time(requested_dates, emergence_date, input_data, data_type, thermal
     :rtype: pandas.DataFrame
     
     '''
-    print 'emergence_date', emergence_date
+    print('emergence_date', emergence_date)
     emergence_datetime = pandas.datetime(emergence_date['year'], emergence_date['month'], emergence_date['day'], emergence_date['hour'], emergence_date['minute'], emergence_date['second'])
     # check that input_data contains 'emergence_datetime' and 'emergence_datetime + 1 year'
     if emergence_datetime not in input_data.index:
@@ -57,7 +57,7 @@ def thermal_time(requested_dates, emergence_date, input_data, data_type, thermal
     # check that input_data contains requested_dates
     # and that emergence_datetime is <= to requested_dates
     for requested_date in requested_dates.index:
-        print 'requested_date', type(requested_date), requested_date
+        print('requested_date', type(requested_date), requested_date)
         if requested_date not in input_data.index:
             raise Exception(' '.join(['requested_date', requested_date, 'does not belong to input_data']))
         if requested_date < emergence_datetime:

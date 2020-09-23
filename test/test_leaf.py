@@ -53,13 +53,13 @@ def test2(leaves=leaves):
     scene= pgl.Scene()
     Viewer.display(scene)
     for k in leaves:
-        print "Rank number: ", k
+        print("Rank number: ", k)
         index = 0
         for leaf in leaves[k]:
             try:
                 test1(leaf,scene)
             except:
-                print "problem with leaf %d in rank %s"%(index,k)
+                print("problem with leaf %d in rank %s"%(index,k))
             index += 1
             translation.z += zt
             #raw_input('Enter something for next leaf...')

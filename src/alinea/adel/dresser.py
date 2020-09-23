@@ -357,7 +357,7 @@ class AdelDress(Adel):
             dfp.loc[:, 'LcType'] = numpy.where(dfp['ntop'] > 0, dfp['ntop'], 1)
             # selector for second level (ranging 1:max_nb_leaf_per_level)
             dfp.loc[:,
-            'LcIndex'] = 1 + numpy.array(map(lambda (s, t): numpy.random.choice(
+            'LcIndex'] = 1 + numpy.array(map(lambda s, t: numpy.random.choice(
                 range(len(self.leaves[s].xydb[str(t)]))),
                                              zip(dfp['species'], dfp[
                                                  'LcType'])))

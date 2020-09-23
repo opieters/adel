@@ -23,7 +23,7 @@ import numpy
 import rpy2.robjects as robj
 r = robj.r
 
-from rpy2.robjects.numpy2ri import numpy2ri
+from rpy2.robjects import numpy2ri
 try:
     numpy2ri.activate()#force auto-conversion mode of Robject to array
 except:
@@ -120,7 +120,8 @@ def dataframeAsdict(df):
     try:
         d = dict([(k,_rvect_asarray(df.r[k][0])) for k in r.colnames(df)])
     except:
-        d = dict([(k,_rvect_asarray(df.rx2(k))) for k in r.colnames(df)])# r delegator is replaced by rx/rx2 in new rpy2
+        #d = dict([(k,_rvect_asarray(df.rx2(k))) for k in r.colnames(df)])# r delegator is replaced by rx/rx2 in new rpy2
+        d = dict([(k, df[k]) for k in r.colnames(df)])  # r delegator is replaced by rx/rx2 in new rpy2
     return d
 
 def _is_iterable(x):
@@ -182,7 +183,7 @@ def setAdel(devT,RcodegeoLeaf,RcodegeoAxe,nplants = 1,seed = None, xydb = None, 
         rxydb = r('as.null()')
     elif isinstance(xydb, dict): # pure python xydb dict, a list of list is passed to setAdel
         # Warning : setadel uses index only and finding closest index if db is too small. Unambiguous meaning of keys retrieving from Lindex afterward there fore will need sorting keys before using Lindex (python sorted key index = Lindex - 1 (Lindex follows Rindexing convention), python list index = lseed - 1. cf conversion infra
-        keys = xydb.keys()
+        keys = list(xydb.keys())
         keys.sort() # to ensure lseed index is sample in the good list)
         rxydb = r.list(*map(str,keys))
         for i in range(len(rxydb)):

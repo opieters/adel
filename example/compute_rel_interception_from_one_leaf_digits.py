@@ -36,7 +36,7 @@ earT_grouped = earT.groupby(['Code', 'id_plt'])
 
 for Linc in (0, 0.5, 1):
     angle_of_incidence = Linc * 90
-    print 'angle_of_incidence', angle_of_incidence
+    print('angle_of_incidence', angle_of_incidence)
 
     metamers_parameters = []
     
@@ -114,7 +114,7 @@ for Linc in (0, 0.5, 1):
     metamers_parameters = pandas.concat(metamers_parameters, ignore_index=True)
     
     metamers_parameters_filepath = pj(DATA_OUT_DIR, 'metamers_parameters' + str(angle_of_incidence) + '.csv')
-    print 'Save Adel parameters to ', metamers_parameters_filepath
+    print('Save Adel parameters to ', metamers_parameters_filepath)
     metamers_parameters.to_csv(metamers_parameters_filepath, na_rep='NA', index=False)
     
     def agronomicplot(nplants=None, length=None, width=None, sowing_density=None, plant_density=None, inter_row=None, noise=0, convunit=100, center_scene=True):
@@ -203,7 +203,7 @@ for Linc in (0, 0.5, 1):
                                   columns=['adel_label', 'star', 'exposed_area'])
     
     caribu_out_filepath = pj(DATA_OUT_DIR, 'caribu_out' + str(angle_of_incidence) + '.csv')
-    print 'Save caribu output to', caribu_out_filepath
+    print('Save caribu output to', caribu_out_filepath)
     caribu_out.to_csv(caribu_out_filepath, na_rep='NA', index=False)
     
     # Calculate the star for each class of metamers (metamer1, metamer2, metamer3, etc).
@@ -224,8 +224,8 @@ for Linc in (0, 0.5, 1):
             pandas.concat([mean_star_per_phytomer_pre, mean_star_per_phytomer], 
                           ignore_index=True)
     
-    print 'Save mean star per phytomer to', mean_star_per_phytomer_filepath
+    print('Save mean star per phytomer to', mean_star_per_phytomer_filepath)
     mean_star_per_phytomer.to_csv(mean_star_per_phytomer_filepath, na_rep='NA', index=False)
 
 tps2 = time.clock()
-print 'Execution time: ', tps2 - tps1
+print('Execution time: ', tps2 - tps1)

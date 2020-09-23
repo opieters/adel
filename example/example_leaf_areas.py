@@ -48,7 +48,7 @@ recorders = initiate_all_adel_septo_recorders(g, nsect)
 for canopy_iter in canopy_timing:
     if canopy_iter:
         date = canopy_iter.value.index[-1]
-        print date
+        print(date)
         
         # Grow wheat
         g = adel.grow(g, canopy_iter.value)

@@ -21,6 +21,8 @@ from alinea.adel.postprocessing import axis_statistics, plot_statistics, \
 from alinea.adel.newmtg import exposed_areas, exposed_areas2canS, duplicate, \
     mtg_factory
 
+import copyreg as copy_reg
+
 
 def flat_list(nested_list):
     return list(chain.from_iterable(nested_list))
